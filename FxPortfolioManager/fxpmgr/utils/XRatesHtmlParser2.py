@@ -50,3 +50,9 @@ class XRatesHtmlParser2(HTMLParser):
             value = data
             self.fxPairDict[key] = value
             
+    def getRatesData(self):
+        return self.fxPairDict
+    
+    def feed(self, xRatesData):
+        HTMLParser.feed(self,xRatesData)
+        return self.getRatesData()

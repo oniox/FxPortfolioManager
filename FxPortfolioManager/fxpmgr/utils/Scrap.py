@@ -10,7 +10,8 @@ def main():
     #print html
     parser=  XRatesHtmlParser2()
     #parser.feed('<html><head><title>Test</title></head><body><h1>Parse me!</h1></body></html>')
-    parser.feed(html)
+    xratesData = parser.feed(html)
+    print xratesData
                         
         
 if __name__ == "__main__":
