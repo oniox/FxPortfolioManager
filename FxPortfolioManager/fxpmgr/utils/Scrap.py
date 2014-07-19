@@ -1,5 +1,6 @@
 from utils.XRatesHtmlParser2 import XRatesHtmlParser2
-from utils.XRatesClient import XRatesHttpClient
+#from clients.XRatesClient import XRatesHttpClient
+from clients.XRatesClient import  XRatesHttpClient
 from utils.RatesCalculator import RatesCalculator
  
 def main():

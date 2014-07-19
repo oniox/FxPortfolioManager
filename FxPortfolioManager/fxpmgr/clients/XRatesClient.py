@@ -14,6 +14,6 @@ class XRatesHttpClient(object):
 		
 	def getXRatesData(self):
 		with contextlib.closing(urllib2.urlopen(self.xURL)) as response:
-			html  = response.read()
+			html = response.read()
 		parser = XRatesHtmlParser2()
 		return parser.feed(html)
