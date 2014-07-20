@@ -7,7 +7,8 @@ from HTMLParser import HTMLParser
 
 class XRatesHtmlParser2(HTMLParser):
     '''
-        Contrived HTMl parser which scrapes rates data off data as fetched from x-rates.com.      
+        Contrived parser which scrapes rates data off data as fetched from x-rates.com. 
+        Scrapes the top 10 rates (base/quote and its inverse) off the rates page.      
     '''
     isInTable = False
     isInTBody = False
@@ -27,16 +28,13 @@ class XRatesHtmlParser2(HTMLParser):
                 self.isInAnchor = True
                 self.currentAttrs = attrs
             if tag == 'tbody':
-                self.isInTBody = True
-            #print tag
+                self.isInTBody = True            
             if self.isInTBody and tag == 'tr':
                 self.isInTRow = True
             
     def handle_endtag(self, tag):
         if self.isInTable and (tag == 'table' or tag == 'tbody'):
             self.isInTable,self.isInTBody = False,False
-            print self.fxPairDict
-            print "Encountered an end tag :", tag
         elif self.isInTBody and tag=='tr':
             self.isInTRow = False;            
         elif self.isInTRow and tag == 'a':
@@ -53,6 +51,6 @@ class XRatesHtmlParser2(HTMLParser):
     def getRatesData(self):
         return self.fxPairDict
     
-    def feed(self, xRatesData):
-        HTMLParser.feed(self,xRatesData)
+    def feed(self, xRatesHTML):
+        HTMLParser.feed(self,xRatesHTML)
         return self.getRatesData()
