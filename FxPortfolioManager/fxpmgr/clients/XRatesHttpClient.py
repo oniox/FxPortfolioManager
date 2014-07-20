@@ -7,13 +7,15 @@ import contextlib
 
 class XRatesHttpClient(object):
 	
-	xURL = None
+	x_url = None
 	
-	def __init__(self, xURL):
-		self.xURL=xURL
+	def __init__(self, xurl):
+		self.x_url=xurl
 		
 	def getXRatesData(self):
-		with contextlib.closing(urllib2.urlopen(self.xURL)) as response:
+		with contextlib.closing(urllib2.urlopen(self.x_url)) as response:
 			html = response.read()
 		parser = XRatesHtmlParser2()
-		return parser.feed(html)
+		data = parser.feed(html)
+		parser.close()
+		return data
