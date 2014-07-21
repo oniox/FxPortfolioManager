@@ -9,6 +9,9 @@ def getFileDirectory():
     
 def getDefaultRates():
     return configp.get('RatesData', 'rates.default')
+    
+def getRatesThreshold():
+    return configp.getfloat('RatesData', 'rates.threshold')
 
 def getSmtpHost():
     return configp.get('Email', 'smtp.host')
@@ -31,6 +34,7 @@ def getReceiver():
 #     configp.add_section('RatesData')
 #     configp.set('RatesData', 'rates.default', ['GBP/USD','GBP/JPY', 'GBP/AUD', 'CAD/GBP', 'CNY/GBP'])    
 #     configp.set('RatesData', 'rates.dir', '../../data')
+#     configp.set('RatesData', 'rates.threshold', float(0.01))
 #      
 #     configp.add_section('Email')
 #     configp.set('Email','smtp.host', 'smtp.google.com')
