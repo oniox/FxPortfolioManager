@@ -23,9 +23,11 @@ class RatesCalculator(object):
         return rates
        
     def isAboveTheshold(self, oldValue, newValue):
+        print '>>> old',oldValue
         if oldValue == newValue or (newValue < oldValue):
             return False
-        elif newValue > (oldValue + (oldValue * self.THRESHOLD)):
+        elif newValue > (float(oldValue) + (float(oldValue) * float(0.01))):
+            print newValue + ' greater then ' + oldValue
             return True
         else:
             return False

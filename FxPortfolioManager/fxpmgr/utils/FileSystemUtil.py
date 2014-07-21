@@ -2,17 +2,28 @@ import os
 import time
 import datetime
 import json
+from fxpmgr.utils import ConfigUtil
 
-inputDir = "../../data"
+'''
+    Persists and loads xrates data (persisted to  files, read as dict from files)
+'''
+
+inputDir = ConfigUtil.getFileDirectory()
+if not os.path.exists(inputDir):
+    os.makedirs(inputDir)
 filenamePrefix = 'xrates'
 
 tokenSep = '_'
 timeformat = '%d%m%y%H%M%S'
 
 
-def getFileNames():
-    files = os.listdir(inputDir)
-    return [f for f in files if os.path.isfile(os.path.join(inputDir, f)) and f.startswith(filenamePrefix)]
+
+def getSortedData():
+    sorted_data = []
+    for filename in getSortedFileNames():
+        sorted_data.append(loadDictFromFile(filename))
+    return sorted_data
+        
 
 def getSortedFileNames():
     filenames = getFileNames()
@@ -21,6 +32,10 @@ def getSortedFileNames():
     sorted(dtFileDict, key=lambda tup: tup[0]);
     return [ tup[1] for tup in dtFileDict ]
     
+def getFileNames():
+    files = os.listdir(inputDir)
+    return [f for f in files if os.path.isfile(os.path.join(inputDir, f)) and f.startswith(filenamePrefix)]
+
 def getAsDate(strdt):
     return time.strptime(strdt, timeformat)
   
