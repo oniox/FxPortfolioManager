@@ -1,7 +1,7 @@
 from  ConfigParser import ConfigParser
 
 configp = ConfigParser()
-configp.read("../../resources/fxpmgr.ini")
+configp.read("../resources/fxpmgr.ini")
 
 
 def getFileDirectory():

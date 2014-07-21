@@ -9,6 +9,7 @@ from fxpmgr.utils import ConfigUtil
 '''
 
 inputDir = ConfigUtil.getFileDirectory()
+
 if not os.path.exists(inputDir):
     os.makedirs(inputDir)
 filenamePrefix = 'xrates'

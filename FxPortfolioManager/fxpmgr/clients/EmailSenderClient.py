@@ -15,7 +15,7 @@ def sendmail(content):
     msg['From'] = sender 
     msg['To'] = recipient
     
-    print 'E-Mailing the following content to client :\n {0} \n {1}'.format(msg['Subject'],content)
+    print 'EMailing the following content to client :\n Subject: {0} \n Text: {1}'.format(msg['Subject'],content)
 
     #s = smtplib.SMTP(ConfigUtil.getSmtpHost().strip())
     #s.login(properties[PROP_SMTP_USER].strip(), '')
