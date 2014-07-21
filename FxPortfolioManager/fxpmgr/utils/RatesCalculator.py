@@ -6,13 +6,11 @@ Created on 19 Jul 2014
 
 class RatesCalculator(object):
     '''
-    Checks threshold
+    Evaluates a collection of rates data values against a pre-specified rates threshold
     '''
-    THRESHOLD = 1/100.0
-
-
-    def __init__(self):
-        pass
+   
+    def __init__(self, threshold):
+        self.threshold = float(threshold)
     
     
     def getRatesAboveThreshold(self, originalRates, prevRates, latestRates):
@@ -23,11 +21,10 @@ class RatesCalculator(object):
         return rates
        
     def isAboveTheshold(self, oldValue, newValue):
-        #print '>>> old',oldValue
         if oldValue == newValue or (newValue < oldValue):
             return False
-        elif newValue > (float(oldValue) + (float(oldValue) * float(0.01))):
-            #print newValue + ' greater then ' + oldValue
+        elif float(newValue) > float(oldValue) + (float(oldValue) * self.threshold):
+            #print '%s greater than %f >> ' %( newValue, (float(oldValue) + (float(oldValue) * float(self.threshold))) )
             return True
         else:
             return False

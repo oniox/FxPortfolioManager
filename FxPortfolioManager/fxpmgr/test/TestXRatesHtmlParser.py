@@ -1,0 +1,30 @@
+'''
+Created on 21 Jul 2014
+
+@author: onioxbiz
+'''
+import unittest
+from fxpmgr.utils.XRatesHtmlParser2 import XRatesHtmlParser2
+
+
+class Test(unittest.TestCase):
+    
+    {"CNY/GBP": "0.094314", "BGN/GBP": "0.404948", "MXN/GBP": "0.045147", "GBP/KZT": "313.063484", "TTD/GBP": "0.092093", "GBP/CLP": "963.998871", "GBP/THB": "54.468093", "INR/GBP": "0.009705", "GBP/PHP": "74.206373", "GBP/TWD": "51.279404", "CAD/GBP": "0.545365", "SAR/GBP": "0.156156", "GBP/IRR": "44522.116524", "LKR/GBP": "0.004496", "CZK/GBP": "0.028826", "PHP/GBP": "0.013476", "ILS/GBP": "0.171322", "KZT/GBP": "0.003194", "GBP/NZD": "1.965699", "GBP/BWP": "15.123682", "NPR/GBP": "0.006039", "GBP/TRY": "3.616803", "HKD/GBP": "0.075553", "GBP/ISK": "195.163023", "GBP/LVL": "0.887368", "GBP/RON": "5.618239", "GBP/HUF": "390.766727", "BND/GBP": "0.472501", "GBP/KRW": "1753.744525", "GBP/BGN": "2.469451", "SEK/GBP": "0.085501", "CLP/GBP": "0.001037", "GBP/BRL": "3.793558", "GBP/SAR": "6.403843", "IDR/GBP": "0.000051", "GBP/COP": "3174.175057", "HUF/GBP": "0.002559", "GBP/RUB": "60.063448", "GBP/OMR": "0.657374", "GBP/VEF": "10.738239", "TRY/GBP": "0.276487", "GBP/KWD": "0.481163", "GBP/USD": "1.707464", "OMR/GBP": "1.521205", "EUR/GBP": "0.792005", "MUR/GBP": "0.019329", "LYD/GBP": "0.476227", "GBP/NOK": "10.582204", "BHD/GBP": "1.553485", "DKK/GBP": "0.106225", "GBP/MYR": "5.421880", "NOK/GBP": "0.094498", "PLN/GBP": "0.191091", "GBP/AED": "6.271514", "GBP/SEK": "11.695765", "GBP/DKK": "9.413955", "GBP/CAD": "1.833634", "JPY/GBP": "0.005775", "RON/GBP": "0.177992", "GBP/PKR": "168.612042", "KRW/GBP": "0.000570", "LVL/GBP": "1.126928", "GBP/HRK": "9.615555", "GBP/HKD": "13.235685", "TWD/GBP": "0.019501", "IRR/GBP": "0.000022", "VEF/GBP": "0.093125", "GBP/CHF": "1.533533", "GBP/MUR": "51.736149", "RUB/GBP": "0.016649", "USD/GBP": "0.585664", "GBP/LYD": "2.099839", "GBP/EUR": "1.262618", "GBP/AUD": "1.821539", "BRL/GBP": "0.263605", "GBP/CNY": "10.602902", "BWP/GBP": "0.066121", "AUD/GBP": "0.548986", "ARS/GBP": "0.071755", "ZAR/GBP": "0.055217", "ISK/GBP": "0.005124", "CHF/GBP": "0.652089", "GBP/QAR": "6.216022", "COP/GBP": "0.000315", "LTL/GBP": "0.229380", "GBP/INR": "103.036898", "KWD/GBP": "2.078297", "GBP/MXN": "22.149677", "GBP/LTL": "4.359569", "GBP/CZK": "34.691145", "GBP/SGD": "2.116396", "GBP/ARS": "13.936318", "GBP/IDR": "19755.355251", "MYR/GBP": "0.184438", "HRK/GBP": "0.103998", "GBP/JPY": "173.167888", "GBP/ZAR": "18.110388", "GBP/BND": "2.116396", "THB/GBP": "0.018359", "GBP/PLN": "5.233122", "QAR/GBP": "0.160875", "AED/GBP": "0.159451", "GBP/BHD": "0.643714", "PKR/GBP": "0.005931", "GBP/ILS": "5.836970", "GBP/LKR": "222.439832", "SGD/GBP": "0.472501", "GBP/NPR": "165.585406", "GBP/TTD": "10.858615", "NZD/GBP": "0.508725"}
+
+
+
+    def setUp(self):
+        self.parser =XRatesHtmlParser2()
+
+
+    def tearDown(self):
+        pass
+
+
+    def testName(self):
+        pass
+
+
+if __name__ == "__main__":
+    #import sys;sys.argv = ['', 'Test.testName']
+    unittest.main()

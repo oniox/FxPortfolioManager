@@ -6,7 +6,7 @@ Created on 20 Jul 2014
 
 class XRatesDataClient(object):
     '''
-    Decorates sorted rates data 
+    Rates data provider. Decorates specified sorted rates data and adds convenient access methods.. 
     '''
 
     sorteddata = []

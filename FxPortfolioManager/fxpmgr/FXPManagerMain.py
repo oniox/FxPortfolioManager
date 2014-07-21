@@ -1,14 +1,13 @@
 from fxpmgr.clients.XRatesHttpClient import XRatesHttpClient
 from fxpmgr.utils.RatesCalculator import RatesCalculator
 from fxpmgr.clients import EmailSenderClient
-from fxpmgr.utils import FileSystemUtil
+from fxpmgr.utils import FileSystemUtil, ConfigUtil
 from fxpmgr.clients.XRatesDataClient import XRatesDataClient
 
 '''
- This script sends an email  to specified recipients when exchange rates breaches pre-defined threshold values: 
- 
+ This script sends an email  to specified recipients whenever exchange rates breaches pre-defined threshold values 
 '''
- 
+
 def main():
     #   scrape data from xrates - default to GBP as base currency - also fetches its inverse 
     data = XRatesHttpClient("http://www.x-rates.com/table/?from=GBP").getXRatesData()    
@@ -17,34 +16,45 @@ def main():
     reader = XRatesDataClient(getSortedRatesData())
  
     #fetch original rates data 
-    initRatesData = reader.getInitialRatesData()
+    initRatesData = filterRatesData(reader.getInitialRatesData())
       
     if initRatesData:
         #where only original exists previous and latest rates defers to original
-        prevData = reader.getPreviousData()
+        prevData = filterRatesData(reader.getPreviousData())
        
         if not prevData:
             prevData = initRatesData
-            
+                    
+        latestData = filterRatesData(reader.getLatestRatesData())            
         print "Original data:\n", initRatesData
         print "Previous data:\n", prevData
-        print "Latest data:\n", reader.getLatestRatesData()
+        print "Latest data:\n", latestData
         print "\n"
         
-        overThreshld = RatesCalculator().getRatesAboveThreshold(initRatesData, prevData, reader.getLatestRatesData())
+        ratesCalc = RatesCalculator(ConfigUtil.getRatesThreshold())
+        overThreshld = ratesCalc.getRatesAboveThreshold(initRatesData, prevData, latestData)
+        
         if overThreshld and len(overThreshld) > 0:
             contents = []
             for tup in overThreshld:                
                 contents.append( 'Threshold breached for FXPair: %s , previous rate : %s, latest rate %s' %(tup))
             EmailSenderClient.sendmail(contents)
         else:
-            print 'Threshold was not breached' 
+            print 'Threshold was not breached for any of the configured currency pairs' 
     
 def persistRatesData(rdata): 
         return FileSystemUtil.writeDictToFile(rdata)   
     
 def getSortedRatesData():
-        return FileSystemUtil.getSortedData();                   
+        return FileSystemUtil.getSortedData(); 
+   
+#filter specified rates data by rates defined in config   
+def filterRatesData(ratesdata):
+    if not ratesdata:
+        return ratesdata
+    configuredRates = ConfigUtil.getDefaultRates()  
+    return {r.strip():float(ratesdata[r.strip()]) for r in configuredRates.split(',') if ratesdata[r.strip()]}
+                      
         
 if __name__ == "__main__":
     main()

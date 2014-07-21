@@ -8,7 +8,7 @@ from HTMLParser import HTMLParser
 class XRatesHtmlParser2(HTMLParser):
     '''
         Contrived parser which scrapes rates data off data as fetched from x-rates.com. 
-        Scrapes the top 10 rates (base/quote and its inverse) off the rates page.      
+        Scrapes the current rates (base/quote and its inverse) off the rates page.      
     '''
     isInTable = False
     isInTBody = False
@@ -18,9 +18,9 @@ class XRatesHtmlParser2(HTMLParser):
     fxPairDict = dict()
         
     def handle_starttag(self, tag, attrs):
-        if not self.isInTable and tag == 'table':
+        if not self.isInTable and tag == 'table': 
             for k,v in attrs:
-                if (k=='class' and  v=='ratesTable'):
+                if (k=='class' and  (v=='ratesTable' or v=='tablesorter ratesTable')):
                     self.isInTable = bool(1)
                     break
         elif self.isInTable:
