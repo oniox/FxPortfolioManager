@@ -5,7 +5,7 @@
 from HTMLParser import HTMLParser
 
 
-class XRatesHtmlParser2(HTMLParser):
+class XRatesHtmlParser(HTMLParser):
     '''
         Contrived parser which scrapes rates data off data as fetched from x-rates.com. 
         Scrapes the current rates (base/quote and its inverse) off the rates page.      
