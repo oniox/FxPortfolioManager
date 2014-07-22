@@ -5,7 +5,9 @@ from fxpmgr.utils import FileSystemUtil, ConfigUtil
 from fxpmgr.clients.XRatesDataClient import XRatesDataClient
 
 '''
- This script sends an email  to specified recipients whenever exchange rates breaches pre-defined threshold values 
+ This coordinator script fetches exchange rates data from xrates.com, persists scraped data to filesystem. 
+ It coordinates evaluation of rates data (as read from filesystem) against a predefined threshold and triggers 
+an email to specified recipients on breach of threshold values 
 '''
 
 def main():

@@ -7,7 +7,7 @@ from HTMLParser import HTMLParser
 
 class XRatesHtmlParser(HTMLParser):
     '''
-        Contrived parser which scrapes rates data off data as fetched from x-rates.com. 
+        Contrived parser which scrapes rates off html data as fetched from x-rates.com. 
         Scrapes the current rates (base/quote and its inverse) off the rates page.      
     '''
     isInTable = False

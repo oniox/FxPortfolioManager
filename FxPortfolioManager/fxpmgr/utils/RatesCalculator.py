@@ -6,7 +6,7 @@ Created on 19 Jul 2014
 
 class RatesCalculator(object):
     '''
-    Evaluates a collection of rates data values against a pre-specified rates threshold
+     Evaluates a collection of rates data values against a pre-specified rates threshold
     '''
    
     def __init__(self, threshold):

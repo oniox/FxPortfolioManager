@@ -5,7 +5,7 @@ import json
 from fxpmgr.utils import ConfigUtil
 
 '''
-    Persists and loads xrates data (persisted to  files, read as dict from files)
+Persists and loads xrates data (persisted to  files, read as dict from files)
 '''
 
 inputDir = ConfigUtil.getFileDirectory()
